@@ -33,9 +33,9 @@ def transform(elt, generators):
                                  call('__singleton__', unit),
                                  call('__fail__'), lineno=0, col_offset=0))
 
-    elt = call("__concatMap__",
-               func([name(generator.target.id, ast.Param())], elt),
-               generator.iter)
+        elt = call("__concatMap__",
+                   func([name(generator.target.id, ast.Param())], elt),
+                   generator.iter)
     return elt
 
 
