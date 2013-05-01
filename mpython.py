@@ -25,8 +25,8 @@ unit = ast.Tuple(elts=[], lineno=0, col_offset=0, ctx=ast.Load())
 def transform(elt, generators):
     elt = call("__singleton__", elt)
 
-    for generator in generators[-1::-1]:
-        for i in generator.ifs[-1::-1]:
+    for generator in reversed(generators):
+        for i in reversed(generator.ifs):
             elt = call("__concatMap__",
                        func([name('_', ast.Param())], elt),
                        ast.IfExp(i,
